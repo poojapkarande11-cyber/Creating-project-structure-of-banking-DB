@@ -18,6 +18,14 @@ FROM Accounts
 WHERE Balance > ( SELECT AVG(Balance) FROM Accounts )
 ORDER BY Balance DESC;
 
+
+
+select AccountId,AccountType,Balance from accounts where balance>(select avg(balance) from accounts);
+
+select * from transactions
+where amount > (select avg(amount) from transactions);
+
+
 SELECT
     AccountID,
     AccountType,
@@ -30,3 +38,6 @@ WHERE AccountID IN
     FROM Transactions
     WHERE TransactionType = 'Deposit'
 );
+
+select AccountID,AccountType,Balance,CustomerID from Accounts where balance = ( select max(balance) from accounts);
+
